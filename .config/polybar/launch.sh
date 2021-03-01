@@ -1,10 +1,11 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # Terminate already running bar instances
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 0.5; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-# Launch bar1
-polybar -c ~/.config/polybar/config main &
+# Launch Polybar, using default config location ~/.config/polybar/config
+polybar example 2>~/.polybar.log &
+echo "Polybar launched..."

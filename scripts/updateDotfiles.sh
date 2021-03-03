@@ -5,19 +5,22 @@ mkdir -p $HOME/.config/ranger && ln -sf $dotdir/.config/ranger/rc.conf $HOME/.co
 mkdir -p $HOME/.config/htop && ln -sf $dotdir/.config/htop/htoprc $HOME/.config/htop/htoprc
 mkdir -p $HOME/.config/termite && ln -sf $dotdir/.config/termite/config $HOME/.config/termite/config
 mkdir -p $HOME/.vim/UltiSnips && ln -sf $dotdir/.vim/UltiSnips/tex.snippets $HOME/.vim/UltiSnips/tex.snippets
+mkdir -p $HOME/.config/rofi && ln -sf $dotdir/.config/rofi/config.rasi $HOME/.config/rofi/config.rasi
+mkdir -p $HOME/.config/sakura && ln -sf $dotdir/.config/sakura/sakura.conf $HOME/.config/sakura/sakura.conf
+
 rm -rf $HOME/.config/i3 && ln -sf $dotdir/.config/i3 $HOME/.config/i3
 ln -sf $dotdir/.config/polybar $HOME/.config/polybar
 ln -sf $dotdir/.config/fontconfig $HOME/.config/fontconfig
 ln -sf $dotdir/.config/feh $HOME/.config/feh
-ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
-ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
+#ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
+#ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
 ln -sf $dotdir/.zshrc $HOME/.zshrc
-ln -sf $dotdir/.profile $HOME/.profile
-ln -sf $dotdir/.Xresources $HOME/.Xresources
-ln -sf $dotdir/.editrc $HOME/.editrc
-ln -sf $dotdir/.inputrc $HOME/.inputrc
-ln -sf $dotdir/.pryrc $HOME/.pryrc
-ln -sf $dotdir/.editorconfig $HOME/.editorconfig
+#ln -sf $dotdir/.profile $HOME/.profile
+#ln -sf $dotdir/.Xresources $HOME/.Xresources
+#ln -sf $dotdir/.editrc $HOME/.editrc
+#ln -sf $dotdir/.inputrc $HOME/.inputrc
+#ln -sf $dotdir/.pryrc $HOME/.pryrc
+#ln -sf $dotdir/.editorconfig $HOME/.editorconfig
 
 # ## setup vim
 # ln -sf $dotdir/.vim/ $HOME/.vim

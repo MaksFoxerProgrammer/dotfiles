@@ -427,6 +427,16 @@ bindsym Control+$mod+mod1+k exec sudo  poweroff
 
 
 
+#Мои настройки
+bindsym $mod+Shift+d exec firefox-developer-edition 
+bindsym $mod+Shift+p exec code 
+bindsym $mod+Shift+h exec xfce4-terminal -e htop 
+bindsym $mod+Shift+v exec xfce4-terminal -e vim 
+bindsym $mod+Shift+x exec xfce4-terminal -e calcurse 
+
+#bindsym $mod+Shift+h exec --no-startup-id /usr/bin/konsole -e /usr/bin/htop
+#assign [class="^konsole$"] → 20
+
 
 ### Можно добавить несколько окон и переключаться между ними. 
 bindsym $mod+Shift+Tab move scratchpad
@@ -454,10 +464,13 @@ for_window [class="firefox-developer-edition"] move workspace 12
 for_window [class="Opera"] move workspace 2
 for_window [class="Nautilus"] move workspace 3
 for_window [class="Sublime_text"] move workspace 4
-for_window [class="zoom"] move workspace 10
+for_window [class="zoom"] move workspace 9
+for_window [class="steam"] move workspace 10
 
-
-
+#for_window [class="Htop"] move workspace 18
+#assign [class="Htop"] $ws3
+#exec --no-startup-id i3-msg 'workspace number $ws1; exec /usr/bin/htop'
+# exec --no-startup-id i3-msg "workspace 3; exec gnome-terminal -e 'htop'"
 
 # Автозапуск
 exec --no-startup-id  exec opera 

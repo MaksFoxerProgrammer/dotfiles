@@ -1,0 +1,577 @@
+# vim: filetype=i3
+#  ___ _____        ____    _    ____  ____  
+# |_ _|___ /       / ___|  / \  |  _ \/ ___| 
+#  | |  |_ \ _____| |  _  / _ \ | |_) \___ \ 
+#  | | ___) |_____| |_| |/ ___ \|  __/ ___) |
+# |___|____/       \____/_/   \_\_|   |____/ 
+#
+# Конфигурационный файл i3-gaps
+# Написан: @alexandrovich.ff
+# Website: http://malikov.red
+
+# #---Основные настройки---# #
+# Рамки окон и отступы
+for_window [class="^.*"] border pixel 2
+gaps inner 0
+gaps outer 0
+# Шрифты
+font pango:TerminessTTF Nerd Font 14
+# #---Цветовая схема---# #
+# Основная
+set_from_resource $darkblack     color0    #000000
+set_from_resource $black         color8    #000000
+set_from_resource $darkred       color1    #000000
+set_from_resource $red           color9    #000000
+set_from_resource $darkgreen     color2    #000000
+set_from_resource $green         color10   #000000
+set_from_resource $darkyellow    color3    #000000
+set_from_resource $yellow        color11   #000000
+set_from_resource $darkblue      color4    #000000
+set_from_resource $blue          color12   #000000
+set_from_resource $darkmagenta   color5    #000000
+set_from_resource $magenta       color13   #000000
+set_from_resource $darkcyan      color6    #000000
+set_from_resource $cyan          color14   #000000
+set_from_resource $darkwhite     color7    #000000
+set_from_resource $white         color15   #ffffff
+set               $transparent             #00000000
+# Дополнительная
+set $cyan0   #4ec2f7
+set $silver0 #e4e4e4
+set $orange  #ff8700
+set $cyan    #4ec2f799
+set $acqua   #00708999
+set $wine    #72003e99
+set $magenta #af005f99
+set $silver  #e4e4e499
+set $toxic   #8EC00099
+set $elegant #00002c30
+# #---Панели---# #
+#  NAME'S               BORDER         BACKG     TEXT        INDICATOR      CHILD_BORDER
+client.focused           $cyan          $cyan     $elegant    $cyan
+client.unfocused         $elegant       $elegant  $cyan       $elegant
+client.focused_inactive  $acqua         $acqua    $silver     $acqua
+client.urgent            $magenta       $magenta  $silver     $magenta
+client.placeholder       $magenta       $magenta  $silver     $magenta
+
+# #---Переменные---# #
+# Клавишы
+set $mod Mod4
+set $alt Mod1
+set $ctrl Control
+set $shift Shift
+set $tab Tab
+set $esc Escape
+set $enter Return
+set $space space
+set $del Delete
+set $caps ISO_Next_Group
+set $r --release
+# Директории
+set $i3 ${HOME}/.config/i3
+# Выполнение / запуск
+set $start exec --no-startup-id
+set $run exec
+set $always exec_always --no-startup-id
+# Выход из системы
+set $shutdown sudo -A shutdown -h now
+set $reboot sudo -A reboot
+set $hibernate sudo -A systemctl suspend
+# Службы
+set $netrefresh sudo -A systemctl restart NetworkManager
+set $proccess_kill xkill
+# Приложения
+set $passmenu ::passmenu
+set $editor $TERMINAL -t 'Текстовый редактор' -e nvim
+set $filemanager $TERMINAL -t 'Файловый менеджер' -e $HOME/.config/vifm/vifmrun
+set $proccess $TERMINAL -t 'Менеджер процессов' -e gotop
+set $telegram $TERMINAL -t "Телеграм" -e nctelegram
+set $xkill xkill
+set $calculate galculator
+set $equalizer $TERMINAL -t 'Эквалайзер' -e cava
+
+# #---Рабочая панель--# #
+# Статус бар
+bar {
+   font pango:TerminessTTF Nerd Font Bold 14
+   strip_workspace_numbers yes
+   colors {
+      background $elegant
+      statusline $darkwhite
+      separator $cyan
+      focused_workspace   $silver0  $silver0  $elegant
+      active_workspace    $silver0  $silver0  $elegant
+      inactive_workspace  $elegant  $elegant  $cyan0
+      urgent_workspace    $acqua    $acqua    $silver0
+   }
+   status_command i3blocks
+   i3bar_command i3bar -t
+   position top
+   mode dock
+   modifier None
+}
+
+# #----Рабочие столы---# #
+# Консольные рабочие столы
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
+# Графические рабочие столы
+set $ws11 "1:"
+set $ws12 "2:"
+set $ws13 "3:"
+set $ws14 "4:"
+set $ws15 "5:"
+set $ws16 "6:"
+set $ws17 "7:"
+set $ws18 "8:"
+set $ws19 "9:"
+set $ws20 "10:"
+# Перейти на консольный рабочий стол
+# %%hotkey: Консольный рабочий стол 1 %%
+bindsym $mod+1 workspace $ws1
+# %%hotkey: Консольный рабочий стол 2 %%
+bindsym $mod+2 workspace $ws2
+# %%hotkey: Консольный рабочий стол 3 %%
+bindsym $mod+3 workspace $ws3
+# %%hotkey: Консольный рабочий стол 4 %%
+bindsym $mod+4 workspace $ws4
+# %%hotkey: Консольный рабочий стол 5 %%
+bindsym $mod+5 workspace $ws5
+# %%hotkey: Консольный рабочий стол 6 %%
+bindsym $mod+6 workspace $ws6
+# %%hotkey: Консольный рабочий стол 7 %%
+bindsym $mod+7 workspace $ws7
+# %%hotkey: Консольный рабочий стол 8 %%
+bindsym $mod+8 workspace $ws8
+# %%hotkey: Консольный рабочий стол 9 %%
+bindsym $mod+9 workspace $ws9
+# %%hotkey: Консольный рабочий стол 10 %%
+bindsym $mod+0 workspace $ws10
+# Перенести окно на консольный рабочий стол
+# %%hotkey: Перенести окно на консольный рабочий стол 1 %%
+bindsym $mod+$shift+1 move container to workspace $ws1
+# %%hotkey: Перенести окно на консольный рабочий стол 2 %%
+bindsym $mod+$shift+2 move container to workspace $ws2
+# %%hotkey: Перенести окно на консольный рабочий стол 3 %%
+bindsym $mod+$shift+3 move container to workspace $ws3
+# %%hotkey: Перенести окно на консольный рабочий стол 4 %%
+bindsym $mod+$shift+4 move container to workspace $ws4
+# %%hotkey: Перенести окно на консольный рабочий стол 5 %%
+bindsym $mod+$shift+5 move container to workspace $ws5
+# %%hotkey: Перенести окно на консольный рабочий стол 6 %%
+bindsym $mod+$shift+6 move container to workspace $ws6
+# %%hotkey: Перенести окно на консольный рабочий стол 7 %%
+bindsym $mod+$shift+7 move container to workspace $ws7
+# %%hotkey: Перенести окно на консольный рабочий стол 8 %%
+bindsym $mod+$shift+8 move container to workspace $ws8
+# %%hotkey: Перенести окно на консольный рабочий стол 9 %%
+bindsym $mod+$shift+9 move container to workspace $ws9
+# %%hotkey: Перенести окно на консольный рабочий стол 10 %%
+bindsym $mod+$shift+0 move container to workspace $ws10
+# Перейти на графический рабочий стол
+# %%hotkey: Графический рабочий стол 1 %%
+bindsym $alt+1 workspace $ws11
+# %%hotkey: Графический рабочий стол 2 %%
+bindsym $alt+2 workspace $ws12
+# %%hotkey: Графический рабочий стол 3 %%
+bindsym $alt+3 workspace $ws13
+# %%hotkey: Графический рабочий стол 4 %%
+bindsym $alt+4 workspace $ws14
+# %%hotkey: Графический рабочий стол 5 %%
+bindsym $alt+5 workspace $ws15
+# %%hotkey: Графический рабочий стол 6 %%
+bindsym $alt+6 workspace $ws16
+# %%hotkey: Графический рабочий стол 7 %%
+bindsym $alt+7 workspace $ws17
+# %%hotkey: Графический рабочий стол 8 %%
+bindsym $alt+8 workspace $ws18
+# %%hotkey: Графический рабочий стол 9 %%
+bindsym $alt+9 workspace $ws19
+# %%hotkey: Графический рабочий стол 10 %%
+bindsym $alt+0 workspace $ws20
+# Перенести окно на графический рабочий стол
+# %%hotkey: Перенести окно на графический рабочий стол 1 %%
+bindsym $alt+$shift+1 move container to workspace $ws11
+# %%hotkey: Перенести окно на графический рабочий стол 2 %%
+bindsym $alt+$shift+2 move container to workspace $ws12
+# %%hotkey: Перенести окно на графический рабочий стол 3 %%
+bindsym $alt+$shift+3 move container to workspace $ws13
+# %%hotkey: Перенести окно на графический рабочий стол 4 %%
+bindsym $alt+$shift+4 move container to workspace $ws14
+# %%hotkey: Перенести окно на графический рабочий стол 5 %%
+bindsym $alt+$shift+5 move container to workspace $ws15
+# %%hotkey: Перенести окно на графический рабочий стол 6 %%
+bindsym $alt+$shift+6 move container to workspace $ws16
+# %%hotkey: Перенести окно на графический рабочий стол 7 %%
+bindsym $alt+$shift+7 move container to workspace $ws17
+# %%hotkey: Перенести окно на графический рабочий стол 8 %%
+bindsym $alt+$shift+8 move container to workspace $ws18
+# %%hotkey: Перенести окно на графический рабочий стол 9 %%
+bindsym $alt+$shift+9 move container to workspace $ws19
+# %%hotkey: Перенести окно на графический рабочий стол 10 %%
+bindsym $alt+$shift+0 move container to workspace $ws20
+# Переключение рабочих столов
+bindsym $alt+$tab workspace prev
+bindsym $alt+$shift+$tab workspace next
+bindsym $shift+$tab $start skippy-xd
+
+# #---Отступы рабочих столов---# #
+# Консольные рабочие столы
+workspace $ws1 gaps inner 0 gaps outer 0
+workspace $ws2 gaps inner 0 gaps outer 0
+workspace $ws3 gaps inner 0 gaps outer 0
+workspace $ws4 gaps inner 0 gaps outer 0
+workspace $ws5 gaps inner 0 gaps outer 0
+workspace $ws6 gaps inner 0 gaps outer 0
+workspace $ws7 gaps inner 0 gaps outer 0
+workspace $ws8 gaps inner 0 gaps outer 0
+workspace $ws9 gaps inner 0 gaps outer 0
+workspace $ws10 gaps inner 0 gaps outer 0
+# Графические рабочие столы
+
+# #---Настройка плавающих окон---# #
+# Модификатор
+floating_modifier $mod
+# Консольные утилиты
+for_window [title="Менеджер процессов"] floating enable, border pixel 2, sticky enable
+for_window [title="Эквалайзер"] floating enable, border pixel 2, sticky enable
+for_window [title="Торрент"] floating enable, border pixel 2, sticky enable
+for_window [title="Плавающий терминал"] floating enable, border pixel 2, resize set 615 380
+for_window [title="Настройка сети"] floating enable, border pixel 2
+for_window [title="Обновления"] floating enable, move absolute position center
+# Графические утилиты
+for_window [class="^Gpick$"] floating enable
+for_window [class="^Galculator$"] floating enable
+for_window [class="^Xarchiver$"] floating enable
+for_window [class="^Sxiv$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="^File-roller$"] floating enable
+for_window [class="^Gpicview$"] floating enable
+for_window [class="^feh$"] floating enable
+for_window [class="^qjackctl$"] floating enable
+for_window [class="^QtPass$"] floating enable
+for_window [class="^balena-etcher-electron$"] floating enable
+for_window [class="^GLava$"] floating enable, border none
+for_window [class="^mpv$"] floating enable, resize set 250 150, move absolute position 1069 560, sticky enable
+for_window [class="^scrcpy$"] floating enable
+# #---Группировка консольных окон---# #
+# Терминал
+for_window [title="Терминал"] move to workspace $ws1 focus
+# Текстовые редакторы
+for_window [title="Текстовый редактор"] move to workspace $ws2 focus
+# Файловые менеджеры
+for_window [title="Файловый менеджер"] move to workspace $ws4 focus
+# Разработка
+
+# Мультимедия
+for_window [title="Видео YouTube"] move to workspace $ws6 focus
+for_window [title="Музыкальный плеер"] move to workspace $ws6 focus
+# Администрирование
+
+# Социальные общение
+for_window [title="Почта"] move to workspace $ws8 focus
+# Остальное
+
+# Развлечения
+
+# #---Группировка графических окон---# #
+# Интернет
+for_window [class="^Chromium$"] move to workspace $ws11 focus
+for_window [class="^Firefox$"] move to workspace $ws11 focus
+for_window [class="^qutebrowser$"] move to workspace $ws11 focus
+# Среды разработки
+for_window [class="^Atom$"] move to workspace $ws12 focus
+for_window [class="^Brackets$"] move to workspace $ws12 focus
+for_window [class="^code-oss$"] move to workspace $ws12 focus
+for_window [class="^Subl3$"] move to workspace $ws12 focus
+# Документы
+for_window [class="^Wps$"] move to workspace $ws13 focus
+for_window [class="^Zathura$"] move to workspace $ws13 focus
+# Файловые менеджеры
+for_window [class=^Pcmanfm$] move to workspace $ws14 focus
+for_window [class=^Filezilla$] move to workspace $ws14 focus
+# Графика
+for_window [class="^Gimp$"] move to workspace $ws15 focus
+for_window [class="^Blender$"] move to workspace $ws15 focus
+for_window [class="^Inkscape$"] move to workspace $ws15 focus
+# Мультимедия
+for_window [class="^Spotify$"] move to workspace $ws16 focus
+for_window [class="^Musixmatch$"] move to workspace $ws16 focus
+for_window [class="^Popcorn-Time$"] move to workspace $ws16 focus
+for_window [class="^vlc$"] move to workspace $ws16 focus
+for_window [class="^obs-studio"] move to workspace $ws16 focus
+# Системные утилиты
+for_window [class="^Lxappearance$"] move to workspace $ws17 focus
+for_window [class="^Pavucontrol$"] move to workspace $ws17 focus
+for_window [class="^qjackctl$"] move to workspace $ws17 focus
+for_window [class="^GParted$"] move to workspace $ws17 focus
+for_window [class="^Woeusbgui$"] move to workspace $ws17 focus
+for_window [class="^balena-etcher-electron$"] move to workspace $ws17 focus
+for_window [class="^Angry IP Scanner$"] move to workspace $ws17 focus
+# Социальное общение
+for_window [class="^TelegramDesktop$"] move to workspace $ws18 focus
+for_window [class="^Messenger for Desktop$"] move to workspace $ws18 focus
+for_window [class="^IGdm$"] move to workspace $ws18 focus
+for_window [class="^ViberPC$"] move to workspace $ws18 focus
+for_window [class="^Trello$"] move to workspace $ws18 focus
+for_window [class="^linphone$"] move to workspace $ws18 focus
+# Администрирование
+for_window [class="^rdesktop$"] floating disable, move to workspace $ws19 focus, layout tabbed, border normal
+for_window [class="^Virt-manager$"] floating disable, move to workspace $ws19 focus, layout tabbed, border normal
+for_window [class="^Nxplayer.bin|Nxclient.bin$"] floating disable, move to workspace $ws19 focus
+for_window [class="^TeamViewer$"] move to workspace $ws19 focus
+for_window [class="^azuredatastudio$"] move to workspace $ws19 focus
+# Развлечения
+for_window [class="^Steam|dota2|hl2_linux$"] move to workspace $ws20 focus
+for_window [class="^stellarium$"] move to workspace $ws20 focus
+
+# #---Функции---# #
+# Изменение размера окон
+mode "resize" {
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+# #---Быстрый доступ---# #
+# Видео YouTube
+#for_window [title="Видео YouTube"] floating enable
+#for_window [title="Видео YouTube"] resize set 600 650
+#for_window [title="Видео YouTube"] move absolute position 737 60
+#for_window [title="Видео YouTube"] move scratchpad
+#for_window [title="Видео YouTube"] border pixel 3
+#for_window [title="Видео YouTube"] sticky enable
+
+# #---Комбинации клавиш---# #
+# Конфигурационные файлы i3
+# %%hotkey: Перечитать конфигурационный файл i3 %%
+bindsym $mod+c reload
+# %%hotkey: Перезапустить Compton %%
+bindsym $mod+$shift+c $start compton --config $HOME/.config/compton/config
+
+# Управление окнами
+# %%hotkey: Изменить размер окна %%
+bindsym $mod+r mode "resize"
+# %%hotkey: Перезапустить i3 %%
+bindsym $mod+$shift+r restart
+
+# %%hotkey: Закрыть приложение\окно %%
+bindsym $mod+$shift+q kill
+
+# %%hotkey: Окна вертикальными вкладками %%
+bindsym $mod+s layout stacking
+# %%hotkey: Окна горизонтальными вкладками %%
+bindsym $mod+w layout tabbed
+# %%hotkey: Обычный режим окон %%
+bindsym $mod+e layout toggle split
+
+# %%hotkey: Фокус на левое окно %%
+bindsym $mod+h focus left
+# %%hotkey: Переместить окно влево %%
+bindsym $mod+$shift+h move left
+
+# %%hotkey: Фокус на нижнее окно %%
+bindsym $mod+j focus down
+# %%hotkey: Переместить окно вниз %%
+bindsym $mod+$shift+j move down
+
+# %%hotkey: Фокус на верхнее окно %%
+bindsym $mod+k focus up
+# %%hotkey: Переместить окно вверх %%
+bindsym $mod+$shift+k move up
+
+# %%hotkey: Фокус на правое окно %%
+bindsym $mod+l focus right
+# %%hotkey: Переместить окно вправо %%
+bindsym $mod+$shift+l move right
+
+# %%hotkey: Вертикальное расположение окон %%
+bindsym $mod+g split h
+# %%hotkey: Горизонтальное расположение окон %%
+bindsym $mod+v split v
+
+# %%hotkey: Полноекранный режим %%
+bindsym $mod+f fullscreen toggle
+# %%hotkey: Режим "свободного" окна %%
+bindsym $mod+$ctrl+space floating toggle
+
+# %%hotkey: Режим привязки окна %%
+bindsym $mod+o     sticky toggle
+# %%hotkey: Включить/выключить панель %%
+bindsym $mod+p     bar mode toggle
+
+# %%hotkey: Запустить горизонтальный терминал %%
+bindsym $mod+bracketright   split horizontal ;; exec $TERMINAL & notify-send ": Терминал запущен"
+# %%hotkey: Запустить вертикальный терминал %%
+bindsym $mod+bracketleft    split vertical ;; exec $TERMINAL & notify-send ": Терминал запущен"
+
+# %%hotkey: Включить отступы %%
+bindsym $mod+$shift+t gaps inner current set 15; gaps outer current set 15
+# %%hotkey: Выключить отступы %%
+bindsym $mod+$shift+d gaps inner current set 0; gaps outer current set 0
+# %%hotkey: Увеличить отступы %%
+bindsym $mod+z gaps outer current plus 5
+# %%hotkey: Уменьшить отступы %%
+bindsym $mod+$shift+z gaps outer current minus 5
+# %%hotkey: Режим заголовка окон %%
+bindsym $mod+b border toggle
+# Мультимедийные клавиши (Fn's)
+bindsym XF86AudioRaiseVolume $start pamixer -i 5 && pkill -RTMIN+9 i3blocks
+bindsym XF86AudioLowerVolume $start pamixer -d 5 && pkill -RTMIN+9 i3blocks
+bindsym XF86AudioMute $start pactl set-sink-mute 0 toggle && pkill -RTMIN+9 i3blocks
+bindsym XF86MonBrightnessUp $start xbacklight -inc 10 && pkill -RTMIN+12 i3blocks
+bindsym XF86MonBrightnessDown $start xbacklight -dec 10 && pkill -RTMIN+12 i3blocks
+bindsym XF86TouchpadToggle $start ::toggletouchpad
+bindsym XF86AudioPlay $start playerctl play-pause
+bindsym XF86AudioStop $start playerctl stop
+bindsym XF86AudioNext $start playerctl next
+bindsym XF86AudioPrev $start playerctl previous
+bindsym XF86Calculator $start $calculate & notify-send ": Калькулятор запущен"
+# Мультимедийные клавиши (Fn's) внешняя клавиатура
+bindsym XF86Tools $start spotify & notify-send ": Spotify запущен"
+bindsym XF86Mail $start mailsync; $start $TERMINAL -t 'Почта' -e neomutt & notify-send ": Почтовый клиент запущен"
+# Мультимедийные клавиши (Fn's) джойстик
+bindsym XF86WWW $start $BROWSER & notify-send ": Браузер запущен"
+# Приложения
+# %%hotkey: Комбинации клавиш %%
+bindsym $mod+$alt+k $start dmenu_hotkeys run -m rofi -a i3
+# %%hotkey: Лаунчер приложений dmenu %%
+bindsym $mod+space $start ::launcher
+# %%hotkey: Лаунчер приложений rofi %%
+bindsym $alt+space $start ::dmenu_run
+# %%hotkey: Меню выклчючения %%
+bindsym $mod+$esc $start ::powermenu
+# %%hotkey: Заблокировать экран %%
+bindsym $mod+$alt+l $start notify-send "Экран заблокирован" && sleep 1 && ::lock && xset dpms force off
+# %%hotkey: Запустить браузер %%
+bindsym $mod+$alt+c $start $BROWSER & notify-send ": Браузер запущен"
+# %%hotkey: Запустить терминал %%
+bindsym $mod+$enter $start $TERMINAL -t 'Терминал' & notify-send ": Терминал запущен"
+# %%hotkey: Запустить плавающий терминал %%
+bindsym $mod+$shift+$enter $start $TERMINAL -t 'Плавающий терминал' & notify-send ": Терминал запущен"
+# %%hotkey: Запустить консольный текстовый редактор %%
+bindsym $mod+$alt+s $start $editor & notify-send ": Текстовый редактор запущен"
+# %%hotkey: Запустить графический текстовый редактор %%
+bindsym $mod+$alt+$shift+s $start $EDITOR_G & notify-send ": Текстовый редактор запущен"
+# %%hotkey: Запустить консольный файловый менеджер %%
+bindsym $mod+$alt+f $start $filemanager & notify-send ": Файловый менеджер запущен"
+# %%hotkey: Запустить графический файловый менеджер %%
+bindsym $mod+$alt+$shift+f $start $FILE_G & notify-send ": Файловый менеджер запущен"
+# %%hotkey: Запустить Telegram %%
+bindsym $mod+$alt+t $start $telegram & notify-send ": Телеграм запущен"
+# %%hotkey: Запустить менеджер процессов %%
+bindsym $ctrl+$esc $start $proccess & notify-send ": Менеджер процессов запущен"
+# %%hotkey: Принудительно закрыть окно %%
+bindsym $r $alt+$esc $start $proccess_kill & notify-send ": Выберите окно для принудительного закрытия"
+# %%hotkey: Установить визуализатор на фон рабочего стола %%
+bindsym $mod+$alt+backslash $start glava --desktop & notify-send ": Визуалитор установлен в качестве фона рабочего стола"
+# %%hotkey: Запустить визуализатор %%
+bindsym $mod+$alt+$shift+backslash $start $equalizer & notify-send ": Визуализатор запущен"
+#bindsym $mod+$shift+m $start $TERMINAL -t 'Видео YouTube' -e mpsyt & notify-send "Медиа плеер YouTube открыт в режиме быстрого доступа"
+# %%hotkey: Определить цвет %%
+bindsym $ctrl+$mod+c $start ::colorpicker & notify-send ": Выбор цвета"
+# Скрипты
+# %%hotkey: Поиск в Google %%
+bindsym $mod+F1 $start ::dmenusearch
+# %%hotkey: Подключение к OVPN серверу %%
+bindsym $alt+F1 $start ::dmenuovpn
+# %%ghotkey: Подключение к WG VPN серверу%%
+bindsym $alt+F2 $start ::dmenuwg
+# %%hotkey: Поиск на YouTube %%
+bindsym $mod+$alt+F1 $start ::dmenusearch-youtube
+# %%hotkey: Запуск почтового клиента %%
+bindsym $mod+$shift+F1 $start mailsync && pkill -RTMIN+5 i3blocks & $TERMINAL -t 'Почта' -e neomutt & notify-send ": Почтовый клиент запущен"
+# %%hotkey: Настройка подключения сети %%
+bindsym $mod+F2 $start $TERMINAL -t 'Настройка сети' -e nmtui && pkill -RTMIN+7 i3blocks
+# %%hotkey: Перезапустить службу сети %%
+bindsym $mod+$shift+F2 $start $netrefresh && pkill -RTMIN+7 i3blocks & notify-send "Служба сети перезапущена"
+# %%hotkey: Поиск на Moonwalk %%
+bindsym $mod+$alt+F2 $start ::dmenusearch-moonwalk
+# %%hotkey: Поиск пароля %%
+bindsym $mod+F3 $start $passmenu
+# %%hotkey: Хранилище паролей %%
+bindsym $mod+$shift+F3 $start qtpass
+# %%hotkey: Документация в PDF %%
+bindsym $mod+F4 $start ::dmenuman
+# %%hotkey: Служба торрентов %%
+bindsym $alt+F4 $start ::transmission
+# %%hotkey: Отобразить экрана смартфона %%
+bindsym $mod+F5 $start ::scrcpy
+# %%hotkey: Включить веб камеру %%
+bindsym $mod+F7 $start ::camtoggle
+# %%hotkey: Скачать музыку с YouTube %%
+bindsym $mod+$shift+F7 $start ::dmenuyoutube-music
+# %%hotkey: Режим второго монитора %%
+bindsym $mod+F8 $start ::dmenudisplay
+# %%hotkey: Скачать видео с YouTube %%
+bindsym $mod+$shift+F8 $start ::dmenuyoutube-video
+# %%hotkey: Подключение внешних устройств %%
+bindsym $mod+F9 $start ::dmenumount
+# %%hotkey: Отключение внешних устройств %%
+bindsym $mod+F10 $start ::dmenuumount
+# %%hotkey: Список Emoji %%
+bindsym $mod+grave $start ::dmenuunicode
+# %%hotkey; Список FontAwesome %%
+bindsym $alt+grave $start ::dmenufontawesome
+# %%hotkey: Запись экрана %%
+bindsym $mod+Print $start ::dmenurecord
+# %%hotkey: Содержимое буфера %%
+bindsym $mod+Home $start ::showclip
+# %%hotkey: Изменить размер окна [влево] %%
+bindsym $ctrl+$mod+h $start ::i3resize left
+# %%hotkey: Изменить размер окна [вправо] %%
+bindsym $ctrl+$mod+l $start ::i3resize right
+# %%hotkey: Изменить размер окна [вверх] %%
+bindsym $ctrl+$mod+k $start ::i3resize up
+# %%hotkey: Изменить размер окна [вниз] %%
+bindsym $ctrl+$mod+j $start ::i3resize down
+# %%hotkey: Изменить размер окна %%
+bindsym $mod+$shift+e $start ::dmenuresize
+# %%hotkey: Переместить окно влево-вниз %%
+bindsym $mod+$shift+b $start ::hover left
+# %%hotkey: Переместить окно вправо-вниз %%
+bindsym $mod+$shift+n $start ::hover right
+# %%hotkey: Сделать скриншот %%
+bindsym Print $start ::dmenuscreenshot
+# %%hotkey: Сделать скриншот на Imgur %%
+bindsym $ctrl+Print $start slip
+# %%hotkey: Сгенерировать QRCode %%
+bindsym $mod+Pause $start ::xcqr
+# %%hotkey: Переключить вкладку -> %%
+bindsym $mod+$tab $start i3flip right
+# %%hotkey: Переключить вкладку <- %%
+bindsym $mod+$shift+$tab $start i3flip left
+# %%hotkey: Переключить раскладку %%
+bindsym $caps $start pkill -RTMIN+11 i3blocks
+# %%hotkey: Включить CapsLock %%
+bindsym $shift+$caps $start pkill -RTMIN+13 i3blocks
+# %%hotkey: Воспроизвести ссылку из буфера %%
+bindsym $mod+m $start mpv "$(xsel -b)" & notify-send ": Видеоплеер запущен"
+
+# Быстрый доступ
+#bindsym $mod+$alt+m [title="Видео YouTube"] scratchpad show
+
+
+# #---Автозагрузка---# #
+# Системные утилиты
+$start setxkbmap us,ru -option grp:caps_toggle
+$start ::setbg
+#$start compton --config $HOME/.config/compton/config
+$start lxpolkit
+$start dunst
+$start synclient TapButton1=1 TapButton2=3 TapButton3=2
+#$start unclutter
+#$start ::display

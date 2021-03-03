@@ -1,0 +1,200 @@
+/**
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
+
+/**
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
+* {
+    foreground:  #000000; 				      //РАМКА
+    backlight:   #ffffff;//не работает
+    background-color:  transparent;           //общий фон
+    dark: #ffffff;	//не рабоатет				
+    //              
+    // Black
+    black:       #000000;
+    lightblack:  #000000;                    //не использовал
+    tlightblack: #000000;
+    //
+    // Red
+    red:         #000000;
+    lightred:    #000000;
+    //
+    // Green
+    green:       #216621;                    //мой зеленый
+    lightgreen:  #005800;
+    //
+    // Yellow
+    yellow:      #ffffff;
+    lightyellow: #ffffff;
+    //
+    // Blue
+    blue:     	 #ba0000;	                 //заливка фона строки меню 
+    lightblue:   #005800;   
+    //
+    // Magenta
+    magenta:      #ffffff;
+    lightmagenta: #ffffff;
+    //
+    // Cyan
+    cyan:      	  #ffffff;
+    tcyan:        #ffffff;
+    lightcyan:    #ffffff;
+    //
+    // White
+    white:        #ffffff;
+    lightwhite:   #ffffff;
+    //
+    // Bold, Italic, Underline
+    highlight:     underline bold #ff5500;       //подсветка совпадений поиска
+
+
+
+
+
+    transparent: rgba(0,0,0,0);
+    //font: "Source Code Pro 12";
+    font: "Font Awesome 5 Brands 11";               //НОРМ шрифтец
+    //font: "Monospace";
+    //font: "Font Awesome 5 Free";
+    //font: "Source Code Pro Light";
+
+
+
+}
+
+window {
+    location: center;
+    anchor:   center;
+    transparency: transparent;
+    padding: 10px;
+    border:  0px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: transparent;		         // фон -шире меню- не трогать
+    children:  [mainbox];
+    orientation: horizontal;
+}
+
+mainbox {
+    spacing: 0;                                 //разрыв верхнего и нижнего пространства
+    children: [ inputbar, message, listview ];
+}
+
+message {
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+//  border-radius: 10px;
+    padding: 5;
+    background-color: @tcyan;
+}
+message {
+    font: "Source Code Pro 8";
+    color: @black;
+}
+
+inputbar {
+    color: #ffffff; 					//ЦВЕТ ШРИФТА ВВОДА
+    padding: 12px;                      //высота поля ввода
+    background-color: rgba(0,0,0,0.8);  //---------------------------------------------------------//цвет полоски run
+    border: 1px 1px 1px 1px;            //толщина ВЕРХНЕЙ рамки
+    border-radius:  15px 15px 0px 0px;  //border-radius закругление углов)
+    border-color: @lightblue;			//рамка полоски run
+    font: "Source Code Pro 18";
+    //font: "Font Awesome 5 Brands 11";
+}
+entry,prompt,case-indicator {
+    text-font:inherit;
+    text-color:inherit;
+}
+prompt {
+    margin:     0px 0.3em 0em 0em ;
+}
+listview {
+    padding: 12px;                           //отступы с боков от текста
+    border-radius: 0px 0px 15px 15px;
+    border-color: @lightblue; 				 //--------------------------рамка нижняя
+    border: 0px 1px 1px 1px;
+    background-color: rgba(0,0,0,0.8);//----------------------------------------------//тут фон списка!!!!!!!!!!!!!!!
+    dynamic: false;
+    lines: 8;								 //сколько линий в меню списка
+}
+element {
+    padding: 4px;                            //отступ между строк
+    vertical-align: 0.5;
+//    border: 2px;
+    border-radius: 4px;
+    background-color: transparent; 			 //заливка цветом строк
+    color: #ffffff;							 //ЦВЕТ ШРИФТА БЛЯТ!!!!!!!!!!!!!
+    font:inherit;
+}
+element selected.normal {
+    background-color: @lightblue;	 //----------------------------------------------переменная полоски меню
+}
+element normal active {
+    foreground: @lightblue;
+}
+element normal urgent {
+    foreground: @lightred;
+}
+element alternate normal {
+}
+element alternate active {
+    foreground: @lightblue;
+}
+element alternate urgent {
+    foreground: @lightred;
+}
+element selected active {
+    background-color: @lightblue;
+    foreground: @dark;
+}
+element selected urgent {
+    background-color: @lightred;
+    foreground: @dark;
+}
+element normal normal {
+
+}
+
+vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+dummy0,  dummy1 {
+    expand: true;
+}
+
+mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+button {
+    font: "FontAwesome 22";
+    padding: 6px;
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
+}
+button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
+}
+
+error-message {
+    expand: true;
+    background-color: #ca0000;
+    border-color: white;
+    border: 8px;
+    padding: 1em;
+}

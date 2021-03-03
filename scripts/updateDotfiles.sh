@@ -12,6 +12,10 @@ rm -rf $HOME/.config/i3 && ln -sf $dotdir/.config/i3 $HOME/.config/i3
 ln -sf $dotdir/.config/polybar $HOME/.config/polybar
 ln -sf $dotdir/.config/fontconfig $HOME/.config/fontconfig
 ln -sf $dotdir/.config/feh $HOME/.config/feh
+
+mkdir -p $HOME/.config/picom
+ln -sf $dotdir/.config/picom/picom.conf $HOME/.config/picom/picom.conf
+
 #ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
 #ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
 ln -sf $dotdir/.zshrc $HOME/.zshrc

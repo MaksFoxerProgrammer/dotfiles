@@ -1,0 +1,10 @@
+configuration { 
+modi: "drun,window";
+ theme: "material";
+ font: "DejaVu 9";
+width: 35;
+ lines: 10;
+ combi-modi: "drun,window";
+ }
+
+@import "/usr/share/rofi/themes/material.rasi"

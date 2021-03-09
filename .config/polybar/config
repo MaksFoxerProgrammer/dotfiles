@@ -94,9 +94,9 @@ font-5 = FontAwesome 5 Brands:pixelsize=9;2
 
 ######################################### Расположение и активация# модулей #################
 
-modules-left =  battery xkeyboard #menu
+modules-left =  battery xkeyboard  #menu
 modules-center =  i3 
-modules-right = date pulseaudio #memory #cpu
+modules-right = date pulseaudio powermenu #memory #cpu
 
 #############################################################################################
 
@@ -162,6 +162,31 @@ scroll-down = i3wm-wsprev
 #########################
 ## ПОДКЛЮЧЕНЫЕ МОДУЛИ  ##
 ############################################################################################################
+
+
+[module/powermenu]
+type = custom/menu
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label-open = ""
+label-open-font = 4
+label-close = ""
+label-close-foreground = ${colors.foreground}
+label-separator = " / "
+label-separator-foreground = ${colors.secondary}
+; reboot
+menu-0-1 = 
+menu-0-1-exec = systemctl reboot
+menu-0-1-foreground = ${colors.foreground}
+; shutdown
+menu-0-0 = "  "
+menu-0-0-exec = systemctl poweroff
+menu-0-0-foreground = ${colors.foreground}
+; suspend
+menu-0-2 = " "
+menu-0-2-exec = systemctl suspend
+menu-0-2-foreground = ${colors.foreground}
+
 
 [module/menu]
 type = custom/menu
@@ -602,6 +627,7 @@ time =%{F#00000} %H:%M:%S
 #date-alt =%{F#00000} %a %e %B %Y
 date-alt =%{F#00000} %a %Y.%m.%d%  
 time-alt =
+#date = %{A1: /home/maks/.config/polybar/modules/polybar-calendar/calendar.sh:}%A, %d %B%{A}
 
 #format-prefix = 
 #format-prefix-foreground = ${colors.foreground-alt}

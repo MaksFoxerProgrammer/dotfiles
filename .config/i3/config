@@ -59,7 +59,7 @@ set $equalizer $TERMINAL -t 'Эквалайзер' -e cava
 
 # ОКНА #
 #==============================================================
-for_window [class=".*"] border pixel 1           #толщина рамки окон 
+for_window [class=".*"] border pixel 0           #толщина рамки окон 
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -121,10 +121,10 @@ for_window [class="steam"] move workspace 10
 
 
 
-#edit gaps mode
+# edit gaps mode
 #==============================================================
 ## GAPS пробклы
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 gaps inner 10
 gaps outer 0
 #smart_gaps on
@@ -201,7 +201,7 @@ font pango:monospace 8
 ## перекючение расскладки 
 exec setxkbmap -layout us,ru -option grp:alt_shift_toggle  
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh   # запускает polybar 
-exec --no-startup-id  picom -b  --config /home/USER/.config/picom/picom.conf
+#exec --no-startup-id  picom -b  --config /home/maks/.config/picom/picom.conf
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -213,11 +213,11 @@ exec --no-startup-id nitrogen --restore &
 exec --no-startup-id xfce4-power-manager --restore
 exec --no-startup-id  exec compton -b 
 # Автозапуск
-exec --no-startup-id  exec opera 
-exec --no-startup-id  exec /usr/bin/vk-messenger
-exec --no-startup-id  exec nautilus
-exec --no-startup-id  exec telegram-desktop
-exec --no-startup-id  /usr/lib/firefox-developer-edition/firefox 
+#exec --no-startup-id  exec opera 
+#exec --no-startup-id  exec /usr/bin/vk-messenger
+#exec --no-startup-id  exec nautilus
+#exec --no-startup-id  exec telegram-desktop
+#exec --no-startup-id  /usr/lib/firefox-developer-edition/firefox 
 #exec --no-startup-id nitrogen --restore
 #exec --no-startup-id exec compton -f --vsync drm -b
 # exec --no-startup-id  exec /opt/sublime_text/sublime_text 
@@ -244,11 +244,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym F11 exec xbacklight -inc 20 # increase screen brightness
 bindsym F12 exec xbacklight -dec 20 # decrease screen brightness
 #================
-# Перетаскивание плавающего окна мышкой
-floating_modifier $mod
-#================
-# start a terminal (FE xfce4-terminal)
-bindsym $mod+Return exec --no-startup-id konsole
+# start a terminal (FE xfce4-terminal konsole)
+bindsym $mod+Return exec --no-startup-id xfce4-terminal
 #================
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -270,26 +267,35 @@ bindsym $mod+Print exec  flameshot gui
 #bindsym --release Print exec "scrot /tmp/%F_%T_$wx$h.png -e 'xclip -selection c -t image/png < $f && rm $f'"
 # захватывает область экрана и копирует в буфер обмена
 bindsym --release Shift+Print exec "scrot -s /tmp/%F_%T_$wx$h.png -e 'xclip -selection c -t image/png < $f && rm $f'"          
-bindsym $mod+XF86Tools exec vlc
-bindsym $mod+Shift+d exec firefox-developer-edition 
-bindsym $mod+Shift+p exec code 
-bindsym $mod+Shift+h exec xfce4-terminal -e htop 
-bindsym $mod+Shift+v exec xfce4-terminal -e vim 
-bindsym $mod+Shift+x exec xfce4-terminal -e calcurse 
+bindsym --release $mod+XF86Tools exec vlc
+bindsym --release $mod+Shift+d exec discord
+bindsym --release $mod+Shift+p exec code 
+bindsym --release $mod+Shift+h exec xfce4-terminal -e htop 
+bindsym --release $mod+Shift+i exec xfce4-terminal -e vim 
+bindsym --release $mod+Shift+x exec xfce4-terminal -e calcurse 
+bindsym --release $mod+Shift+f exec --no-startup-id firefox-developer-edition
+bindsym --release $mod+Shift+v exec --no-startup-id /usr/bin/vk-messenger
+bindsym --release $mod+Shift+o exec --no-startup-id /usr/bin/opera
+bindsym --release $mod+Shift+t exec --no-startup-id telegram-desktop
+bindsym --release $mod+Shift+n exec --no-startup-id nautilus
+bindsym --release $mod+Shift+s exec --no-startup-id subl3
 #================
 ## рамка  у окон
-bindsym $mod+x border toggle
+bindsym --release $mod+x border toggle
 #================
 ## вкл  ребут блок экрана 
 #bindsym Control+mod1+l exec  i3lock -i /home/uriy/Картинки/7.png
 #bindsym Control+mod1+l exec bash i3lock-fancy
-bindsym Control+$mod+mod1+r exec sudo  reboot
-bindsym Control+$mod+mod1+k exec sudo  poweroff 
+bindsym --release Control+$mod+mod1+r exec sudo  reboot
+bindsym --release Control+$mod+mod1+k exec sudo  poweroff 
 #================
 ### Можно добавить несколько окон и переключаться между ними. 
 bindsym $mod+Shift+Tab move scratchpad
-bindsym $mod+Tab scratchpad show, resize set 640 480, move position center
+bindsym $mod+Tab scratchpad show, resize set 940 480, move position center
 #exec --no-startup-id  exec  conky -c ~/.conky/ARCH-V-1/conkyrc
+#================
+# Перетаскивание плавающего окна мышкой
+floating_modifier $mod
 
 
 
@@ -356,7 +362,7 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move corntainer to workspace number $ws10
+bindsym $mod+Shift+0 move container to workspace number $ws10
 # Перенести окно на графический рабочий стол
 bindsym $ctrl+Shift+1 move container to workspace number $ws11
 bindsym $ctrl+Shift+2 move container to workspace number $ws12
@@ -407,7 +413,23 @@ bindsym $mod+r mode "resize"
 
 
 
+set $Locker i3lock && sleep 1
 
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Control+l mode "$mode_system"
 
 
 

@@ -435,3 +435,4 @@ bindsym $mod+Control+l mode "$mode_system"
 
 
 
+for_window [class="Uzbl-core"] focus child, layout stacking, focus
